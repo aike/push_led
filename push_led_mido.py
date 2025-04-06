@@ -1,3 +1,4 @@
+# midoを使用するバージョン
 import mido
 from mido import Message
 import time
@@ -27,7 +28,7 @@ for n in range(alen * 4):
 
     color = n // alen
     # print(color)
-    # 8x8の各ピクセルに対して、左下から右下へ行優先でMIDIノート番号を割り当て
+    # 8x8の各ピクセルに対して、左下から右上へ行優先でMIDIノート番号を割り当て
     for row in range(8):
         for col in range(8):
             col2 = (col + n) % alen

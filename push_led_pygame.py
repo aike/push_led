@@ -1,3 +1,4 @@
+# pygameを使用するバージョン
 import pygame
 import pygame.midi
 import time
@@ -44,7 +45,7 @@ try:
         color = n // alen
         print(color)
 
-        # 8x8の各ピクセルに対して、左下から右下へ行優先でMIDIノート番号を割り当て
+        # 8x8の各ピクセルに対して、左下から右上へ行優先でMIDIノート番号を割り当て
         for row in range(8):
             for col in range(8):
                 col2 = (col + n) % alen
