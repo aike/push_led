@@ -38,7 +38,7 @@ channel = 0      # チャンネル0
 
 try:
     alen = len(glyph[0])
-    for n in range(alen * 1):
+    for n in range(alen * 4):
         print(n)
 
         color = n // alen
