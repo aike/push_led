@@ -180,8 +180,8 @@ chordpos = {
     "M":    [[0,0],[-1,1],[2,1]],
     "m":    [[0,0],[3,0],[2,1]],
     "M7":   [[0,0],[-1,1],[2,1],[1,2]],
-    "m7":   [[0,0],[3,0],[2,1],[0,2]],
-    "7":    [[0,0],[-1,1],[2,1],[0,2]],
+    "m7":   [[0,0],[-2,1],[-3,2],[0,2]],
+    "7":    [[0,0],[-1,1],[-3,2],[0,-1]],
     "dim":  [[0,0],[3,0],[1,1]],
     "aug":  [[0,0],[-1,1],[-2,2]],
     "hdim": [[0,0],[3,0],[1,1],[0,2]],
@@ -211,7 +211,7 @@ green = 126
 red = 127
 
 
-debug = True
+debug = False
 
 
 def font_copy(font_a):
@@ -289,16 +289,19 @@ def put(x, y, color):
             text_put(x, y, "[]")
         elif color == 3:
             text_put(x, y, "##")
+        elif color == 4:
+            text_put(x, y, "@@")
     else:
         if color == 0:
             midi_put(x, y, black)
         elif color == 1:
             midi_put(x, y, blue)
         elif color == 2:
-            midi_put(x, y, lightgray)
-        elif color == 3:
             midi_put(x, y, darkgray)
-        midi_put(x, y, color)
+        elif color == 3:
+            midi_put(x, y, lightgray)
+        elif color == 4:
+            midi_put(x, y, green)
 
 def clear():
     if debug:
@@ -340,19 +343,20 @@ def next_question(base, mod1, mod2):
     # 2. コードネームを表示
     text_clear()
     show(make_font(base, mod1, mod2))
-    print("")
     time.sleep(1.5)
 
     # 3. スケールを表示
     show_scale()
+    time.sleep(0.5)
 
     # 4. コードを表示
     chord = chordpos[mod2]
     for i in range(len(chord)):
         cpos = chord[i]
-        text_put(pos[0] + cpos[0], pos[1] + cpos[1], "$$")
-    print("")
-    time.sleep(2)
+        put(pos[0] + cpos[0], 7 - (pos[1] + cpos[1]), 4)
+    if debug:
+        print("")
+    time.sleep(3)
 
 
 next_question("C", "", "M7")
