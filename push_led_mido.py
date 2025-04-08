@@ -23,7 +23,7 @@ base_note = 36   # ノート番号36からスタート
 channel = 0      # チャンネル0
 
 alen = len(glyph[0])
-for n in range(alen * 4):
+for n in range(alen * 4 + 1):
     print(n)
 
     color = n // alen
