@@ -341,7 +341,7 @@ def next_question(base, mod1, mod2):
     pos = notepos[base + mod1]
 
     # 2. コードネームを表示
-    text_clear()
+    clear()
     show(make_font(base, mod1, mod2))
     time.sleep(1.5)
 
@@ -353,21 +353,30 @@ def next_question(base, mod1, mod2):
     chord = chordpos[mod2]
     for i in range(len(chord)):
         cpos = chord[i]
-        put(pos[0] + cpos[0], 7 - (pos[1] + cpos[1]), 4)
+        x = pos[0] + cpos[0]
+        y = pos[1] + cpos[1]
+        if x > 5:
+            x -= 5
+            y += 1
+        elif x < 1:
+            x += 5
+            y -= 1        
+        if y > 5:
+            x += 3
+            y -= 3
+        put(x, 7 - y, 4)
     if debug:
         print("")
     time.sleep(3)
 
+for i in range(8):
+    next_question("E", "", "m7")
+    next_question("A", "", "m7")
+    next_question("D", "", "m7")
+    next_question("G", "", "7")
 
-next_question("C", "", "M7")
-next_question("D", "", "m7")
-next_question("G", "", "7")
+    # next_question("C", "", "M7")
+    # next_question("D", "", "m7")
+    # next_question("G", "", "7")
 
-next_question("C", "", "M7")
-next_question("D", "", "m7")
-next_question("G", "", "7")
-
-next_question("C", "", "M7")
-next_question("D", "", "m7")
-next_question("G", "", "7")
-
+    show_scale()
