@@ -974,5 +974,5 @@ if __name__ == "__main__":
     for d in data:
         print("\033[2J\033[H", end="")
         show(d)
-        time.sleep(0.06)
+        time.sleep(0.066)
     clear()
